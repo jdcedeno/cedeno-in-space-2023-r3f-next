@@ -6,6 +6,7 @@ import { Suspense } from 'react'
 const Logo = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Logo), { ssr: false })
 const Dog = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Dog), { ssr: false })
 const Duck = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Duck), { ssr: false })
+const Chocolate = dynamic(() => import('@/components/canvas/Examples').then((mod) => mod.Chocolate), { ssr: false })
 const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.View), {
   ssr: false,
   loading: () => (
@@ -75,6 +76,14 @@ export default function Page() {
             have multiple views with a single, performant canvas. These views will follow their tracking elements,
             scroll along, resize, etc.
           </p>
+        </div>
+        <div className='relative my-12 h-48 w-full py-6 sm:w-1/2 md:mb-40'>
+          <View orbit className='relative h-full sm:h-48 sm:w-full'>
+            <Suspense fallback={null}>
+              <Chocolate route='/blob' scale={2} position={[0, -1.6, 0]} />
+              <Common color={'lightblue'} />
+            </Suspense>
+          </View>
         </div>
       </div>
     </>
